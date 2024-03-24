@@ -1,24 +1,15 @@
 #include <stdio.h>
-#include <windows.h>
 
-
-
-unsigned int gcd (unsigned int N, unsigned int M) {
+unsigned int gcd(unsigned int N, unsigned int M) {
     while (M != 0) {
         unsigned int t = M;
         M = N % M;
         N = t;
-        // 7 14 14
-        // 14 7 14
-        // 7 0 7
     }
     return N;
 }
 
-
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-
     unsigned int N;
     unsigned int M;
 

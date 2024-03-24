@@ -1,23 +1,20 @@
 #include <stdio.h>
-#include <windows.h>
+#include <limits.h>
 
-int g1, g2;
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
+    int g1, g2;
     printf("Введите первое число:");
     scanf("%d", &g1);
 
     printf("Введите второе число:");
     scanf("%d", &g2);
 
-    // Арифмитические операции 
     printf("Результаты арифметических операций:\n");
     printf("%d + %d = %d\n", g1, g2, g1 + g2);
     printf("%d - %d = %d\n", g1, g2, g1 - g2);
     printf("%d * %d = %d\n", g1, g2, g1 * g2);
 
-    // Деление
     if (g2 != 0) {
         printf("%d / %d = %d\n", g1, g2, g1 / g2);
     } else {
@@ -30,7 +27,6 @@ int main() {
         printf("Остаток от деления на ноль\n");
     }
 
-    // Сравнительные операции
     printf("Результаты сравнительных операций:\n");
     printf("%d == %d: %d\n", g1, g2, g1 == g2);
     printf("%d != %d: %d\n", g1, g2, g1 != g2);
@@ -39,14 +35,12 @@ int main() {
     printf("%d >= %d: %d\n", g1, g2, g1 >= g2);
     printf("%d <= %d: %d\n", g1, g2, g1 <= g2);
 
-    // Логические операции
     printf("Результаты логических операций:\n");
     printf("%d && %d: %d\n", g1, g2, g1 && g2);
     printf("%d || %d: %d\n", g1, g2, g1 || g2);
     printf("!%d: %d\n", g1, !g1);
     printf("!%d: %d\n", g2, !g2);
 
-    // Побитовые операции
     printf("Результаты побитовых операций:\n");
     printf("%d & %d: %d\n", g1, g2, g1 & g2);
     printf("%d | %d: %d\n", g1, g2, g1 | g2);

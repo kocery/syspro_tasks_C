@@ -1,6 +1,15 @@
 #include <stdio.h>
+#include <malloc.h>
+
+void nullCheck(void *ptr) {
+    if (ptr == NULL) {
+        printf("Out of memory!");
+        exit(0);
+    }
+}
 
 void printArr(int *arr, size_t len) {
+    printf("Your array: \n");
     for (size_t i = 0; i < len; i++) {
         printf("%d ", arr[i]);
     }
@@ -9,9 +18,7 @@ void printArr(int *arr, size_t len) {
 
 void scanArr(int *arr, size_t len) {
     for (size_t i = 0; i < len; i++) {
-        int num;
-        scanf("%i", &num);
-        arr[i] = num;
+        scanf("%i", &arr[i]);
     }
 }
 
@@ -45,28 +52,15 @@ void revertArr(int *arr, size_t len) {
 }
 
 int compareArrays(int *arr1, size_t len1, int *arr2, size_t len2) {
-    size_t min;
-    if (len1 > len2) {
-        min = len2;
-    } else {
-        min = len1;
-    }
+    size_t min = (len1 < len2) ? len1 : len2;
 
     for (size_t i = 0; i < min; i++) {
-        if (arr1[i] < arr2[i]) {
-            return -1;
-        }
-        if (arr1[i] > arr2[i]) {
-            return 1;
-        }
+        if (arr1[i] < arr2[i]) return -1;
+        if (arr1[i] > arr2[i]) return 1;
     }
 
-    if (len1 < len2) {
-        return -1;
-    }
-    if (len1 > len2) {
-        return 1;
-    }
+    if (len1 < len2) return -1;
+    if (len1 > len2) return 1;
 
     return 0;
 }
@@ -88,29 +82,41 @@ void extractDigits(int *arr, size_t len, int X) {
         }
 
         arr[len - 1 - i] = X / k;
-        printf("%i test\n", k);
         X %= k;
     }
 }
 
 int main() {
-    int arr1[5];
-    int arr2[] = {1, 2, 3, 4, -5};
-    size_t len1 = sizeof(arr1) / sizeof(arr1[0]);
-    size_t len2 = sizeof(arr2) / sizeof(arr2[0]);
-    scanArr((int *) &arr1, len1);
-    printArr((int *) &arr1, len1);
-    printf("%i in arr\n", maxInArr((int *) &arr1, len1));
+    size_t len1;
+    size_t len2;
+    printf("enter your first array length: ");
+    scanf("%zi", &len1);
+    printf("enter your second array length: ");
+    scanf("%zi", &len2);
+    int *arr1 = (int *) malloc(len1 * sizeof(int));
+    int *arr2 = (int *) malloc(len2 * sizeof(int));
+    nullCheck(&arr1);
+    nullCheck(&arr2);
 
-    if (findInArr((int *) &arr1, len1, 1) == -1) {
+    printf("enter your first array: ");
+    scanArr(arr1, len1);
+    printf("enter your second array: ");
+    scanArr(arr2, len1);
+    printArr(arr1, len1);
+    printArr(arr2, len2);
+    printf("%i in arr\n", maxInArr(arr1, len1));
+
+    if (findInArr(arr1, len1, 1) == -1) {
         printf("NULL: number not in arr\n");
     } else {
-        printf("%zu find in arr\n", findInArr((int *) &arr1, len1, 1));
+        printf("%zu find in arr\n", findInArr(arr1, len1, 1));
     }
 
-    printf("%i comp arr\n", compareArrays((int *) &arr1, len1, (int *) &arr2, len2));
-    revertArr((int *) &arr1, len1);
-    extractDigits((int *) &arr1, len1, 998);
-    printArr((int *) &arr1, len1);
-}
+    printf("%i comp arr\n", compareArrays(arr1, len1, arr2, len2));
+    revertArr(arr1, len1);
+    extractDigits(arr1, len1, 998);
+    printArr(arr1, len1);
 
+    free(arr1);
+    free(arr2);
+}

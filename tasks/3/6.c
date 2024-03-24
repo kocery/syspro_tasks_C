@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <windows.h>
 
 int sum_of_digits(int num) {
     int sum = 0;
@@ -12,7 +11,6 @@ int sum_of_digits(int num) {
 
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
     unsigned long L, R;
 
     printf("Введите значение N типа unsigned long long:");

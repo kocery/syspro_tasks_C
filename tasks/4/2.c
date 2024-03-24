@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include <windows.h>
-
-
 
 unsigned int countDivisors(unsigned int N) {
     unsigned int c = 0;
@@ -16,8 +13,6 @@ unsigned int countDivisors(unsigned int N) {
 
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-
     unsigned int N;
 
     printf("Введите значение N типа unsigned int:");

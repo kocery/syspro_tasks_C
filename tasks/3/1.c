@@ -1,11 +1,8 @@
 #include <stdio.h>
-#include <windows.h>
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
     unsigned long n;
 
-    // Чтение значения года
     printf("Введите начение N типа unsigned long:");
     scanf("%lu", &n);
 

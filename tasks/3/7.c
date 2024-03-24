@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <windows.h>
-
 
 unsigned int N;
+
 
 void printField(char field[][N]) {
     for (int i = 0; i < N; ++i) {
@@ -14,8 +13,6 @@ void printField(char field[][N]) {
 }
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
-
     printf("Введите значение N типа unsigned int:");
     scanf("%iu", &N);
 

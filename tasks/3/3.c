@@ -1,10 +1,7 @@
 #include <stdio.h>
-#include <windows.h>
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
     unsigned long N;
-
     unsigned long Nc = 0;
 
     printf("Введите начение N типа unsigned long:");

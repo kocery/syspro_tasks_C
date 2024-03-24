@@ -1,23 +1,20 @@
 #include <stdio.h>
-#include <windows.h>
-#include <stdbool.h>
 
-bool is_prime(unsigned long long n) {
-    if (n <= 1) return false;
-    if (n <= 3) return true;
-    if (n % 2 == 0 || n % 3 == 0) return false;
+int is_prime(unsigned long long n) {
+    if (n <= 1) return 0;
+    if (n <= 3) return 1;
+    if (n % 2 == 0 || n % 3 == 0) return 0;
 
     for (unsigned long long i = 5; i * i <= n; i += 6) {
         if (n % i == 0 || n % (i + 2) == 0)
-            return false;
+            return 0;
     }
 
-    return true;
+    return 1;
 }
 
 
 int main() {
-    SetConsoleOutputCP(CP_UTF8);
     unsigned long long N;
 
     printf("Введите значение N типа unsigned long long:");
